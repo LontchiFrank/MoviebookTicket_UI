@@ -3,32 +3,32 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
 
-function Card() {
+function Card({ title, image, clock }) {
   return (
     <View style={styles.card}>
       <View style={styles.cardHead}>
         <Image
           source={{
-            uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHiilqWTDb5zhm10TQUmtfwdPIerqke7J9nA&usqp=CAU",
+            uri: image,
           }}
           style={{ width: "100%", height: "100%", borderRadius: "15px" }}
         />
       </View>
       <View style={styles.cardBody}>
-        <Text style={styles.cardTitle}>Black Adam</Text>
+        <Text style={styles.cardTitle}>{title}</Text>
         <View style={styles.rate}>
           <View style={styles.cardRate}>
-            <FontAwesome name="star" size={12} color="#560bad" />
-            <FontAwesome name="star" size={12} color="#560bad" />
-            <FontAwesome name="star" size={12} color="#560bad" />
-            <FontAwesome name="star" size={12} color="#560bad" />
-            <FontAwesome name="star" size={12} color="#adb5bd" />
+            <FontAwesome name="star" size={10} color="#560bad" />
+            <FontAwesome name="star" size={10} color="#560bad" />
+            <FontAwesome name="star" size={10} color="#560bad" />
+            <FontAwesome name="star" size={10} color="#560bad" />
+            <FontAwesome name="star" size={10} color="#adb5bd" />
           </View>
           <Text style={styles.textRate}>812 Reviews</Text>
         </View>
         <View style={styles.clock}>
           <EvilIcons name="clock" size={18} color="#adb5bd" />
-          <Text style={styles.clockText}>2h 8min</Text>
+          <Text style={styles.clockText}>{clock}</Text>
         </View>
       </View>
     </View>
@@ -37,24 +37,27 @@ function Card() {
 
 const styles = StyleSheet.create({
   card: {
-    width: "100px",
-    height: "200px",
+    width: 150,
+    height: 310,
     background: "white",
     marginBottom: 4,
+    marginRight: 15,
+    // borderRadius: 15,
+    // backgroundColor: "blue",
   },
   cardHead: {
-    width: "40%",
-    height: "30%",
+    width: "100%",
+    height: "80%",
     // backgroundColor: "red",
     borderRadius: "16px",
   },
   cardBody: {
     paddingTop: 10,
     width: "100%",
-    height: "70%",
+    height: "100%",
   },
   cardTitle: {
-    fontSize: "16px",
+    fontSize: "15px",
     paddingBottom: 3,
     fontWeight: "500",
   },
@@ -65,13 +68,13 @@ const styles = StyleSheet.create({
   },
   rate: {
     width: "40%",
-    height: "3%",
+    height: "7%",
     display: "flex",
     flexDirection: "row",
     gap: 20,
   },
   textRate: {
-    fontSize: "12px",
+    fontSize: "11px",
     fontWeight: "500",
     color: "#7209b7",
   },

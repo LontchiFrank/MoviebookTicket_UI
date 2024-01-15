@@ -1,10 +1,18 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import Card from "./components/Card.js";
+import { DATA, metaScore } from "./components/Data.js";
+import BoxCard from "./components/BoxCard.js";
 
 export default function App() {
   return (
@@ -26,7 +34,40 @@ export default function App() {
         <FontAwesome5 name="telegram" size={20} color="#dee2e6" />
         <Text style={styles.smallHead1}>STAR Cineplex</Text>
       </View>
-      <Card />
+      {/* <Card /> */}
+      <View style={styles.horizontal}>
+        <FlatList
+          data={DATA}
+          renderItem={({ item }) => (
+            <Card title={item.Title} image={item.Poster} clock={item.Runtime} />
+          )}
+          keyExtractor={(item) => item.imdbID}
+          horizontal={true}
+          scrollEnabled
+          showsHorizontalScrollIndicator={false}
+        />
+      </View>
+      <View style={styles.fourthSide}>
+        <TouchableOpacity style={styles.soonComing}>
+          <Text style={styles.soonText}> Coming Soon</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.horizontal1}>
+        <FlatList
+          data={metaScore}
+          renderItem={({ item }) => (
+            <BoxCard
+              title={item.Title}
+              image={item.Poster}
+              meta={item.Metascore}
+            />
+          )}
+          keyExtractor={(item) => item.Id}
+          horizontal={true}
+          scrollEnabled
+          showsHorizontalScrollIndicator={false}
+        />
+      </View>
 
       <StatusBar style="auto" />
     </View>
@@ -51,7 +92,7 @@ const styles = StyleSheet.create({
     paddingRight: 24,
   },
   titleHead: {
-    fontSize: "20px",
+    fontSize: 17,
   },
   secondHead: {
     fontSize: "21px",
@@ -90,5 +131,43 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     flexDirection: "row",
     // backgroundColor: "red",
+  },
+  horizontal: {
+    // height: "100%",
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    gap: 20,
+    // backgroundColor: "green",
+  },
+  horizontal1: {
+    // height: "100%",
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+
+    // backgroundColor: "green",
+  },
+  fourthSide: {
+    width: "100%",
+    height: "9%",
+    display: "flex",
+    justifyContent: "flex-end",
+    marginBottom: 28,
+    // backgroundColor: "green",
+  },
+  soonComing: {
+    width: 140,
+    height: 30,
+    borderWidth: 1,
+    borderColor: "#adb5bd",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    // backgroundColor: "red",
+  },
+  soonText: {
+    textTransform: "uppercase",
+    color: "#5a189a",
   },
 });
