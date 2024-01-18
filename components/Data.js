@@ -22,11 +22,11 @@ export const DATA = [
     Type: "movie",
     Response: "True",
     Images: [
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjEyOTYyMzUxNl5BMl5BanBnXkFtZTcwNTg0MTUzNA@@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BNzM2MDk3MTcyMV5BMl5BanBnXkFtZTcwNjg0MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTY2ODQ3NjMyMl5BMl5BanBnXkFtZTcwODg0MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTMxOTEwNDcxN15BMl5BanBnXkFtZTcwOTg0MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTYxMDg1Nzk1MV5BMl5BanBnXkFtZTcwMDk0MTUzNA@@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
+      "https://i.pinimg.com/736x/f3/f0/4a/f3f04a485eaad60915d70bb3df8e6440.jpg",
+      "https://thejackson-reedbeacon.com/wp-content/uploads/2023/03/Screen-Shot-2023-03-06-at-12.30.28-PM.png",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhvTLGVA8jqodel1LyHWzdoqq7ovZVh2Ualg&usqp=CAU",
+      // "https://fifthsun.com/cdn/shop/products/22tcav00001a-003-pandora-night-202-172-swatch_800x.jpg?v=1663651444",
+      // "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqfskUAFxFh-LvWfpVjh4DJYcb8H8XMFPiqg&usqp=CAU",
     ],
   },
   {

@@ -13,7 +13,13 @@ import EvilIcons from "@expo/vector-icons/EvilIcons";
 
 function Card({ title, image, clock, item }) {
   const [openModal, setOpenModal] = useState(false);
+  const [par, setPar] = useState(0);
+  const [post, setPost] = useState(item.Images);
   const RenderedModal = () => {
+    const changePic = (i) => {
+      setPar(i);
+      // par + 1;
+    };
     return (
       <Modal visible={openModal} animationType="slide" transparent={true}>
         <View
@@ -34,7 +40,7 @@ function Card({ title, image, clock, item }) {
           >
             <Image
               source={{
-                uri: image,
+                uri: post[par],
               }}
               style={{ width: "100%", height: "100%" }}
             />
@@ -47,6 +53,7 @@ function Card({ title, image, clock, item }) {
               zIndex: 4,
               height: 550,
               borderRadius: 10,
+              marginBottom: 35,
             }}
           >
             <Text style={{ color: "#343A40", fontSize: 36, fontWeight: "600" }}>
@@ -122,36 +129,100 @@ function Card({ title, image, clock, item }) {
                 {item.Writer}{" "}
               </Text>
             </View>
-            <View>
-              <View
-                style={{
-                  width: 95,
-                  height: 95,
-                  borderRadius: 10,
-                }}
-              >
-                <FlatList
-                  data={item.Images}
-                  renderItem={({ item }) => (
-                    <Image
-                      source={{
-                        uri: item,
+            <View
+              style={{
+                width: "100%",
+                display: "flex",
+                // justifyContent: "center",
+                alignItems: "center",
+                marginTop: 40,
+                marginBottom: 40,
+                gap: 10,
+              }}
+            >
+              <FlatList
+                data={post}
+                numColumns={3}
+                renderItem={({ item, index }) => (
+                  <TouchableOpacity onPress={() => changePic(index)}>
+                    <View
+                      style={{
+                        width: 95,
+                        height: 95,
+                        borderRadius: 20,
+                        marginHorizontal: 10,
+                        borderWidth: par == index ? 2 : null,
+                        borderColor: par == index ? "#004e89" : null,
                       }}
-                      style={{ width: "100%", height: "100%" }}
-                    />
-                  )}
-                  // keyExtractor={(item) => item.imdbID}
-                  // horizontal={true}
-                  // scrollEnabled
-                  // showsHorizontalScrollIndicator={false}
-                />
-              </View>
+                    >
+                      <Image
+                        source={{
+                          uri: item,
+                        }}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          borderRadius: 20,
+                        }}
+                      />
+                    </View>
+                  </TouchableOpacity>
+                )}
+                // keyExtractor={(item) => item.imdbID}
+                // horizontal={true}
+                // scrollEnabled
+                // showsHorizontalScrollIndicator={false}
+              />
             </View>
-            <TouchableOpacity onPress={() => setOpenModal(false)}>
-              <View>
-                <Text>Clear</Text>
-              </View>
-            </TouchableOpacity>
+            <View
+              style={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                gap: 20,
+              }}
+            >
+              <TouchableOpacity>
+                <View
+                  style={{
+                    width: 180,
+                    height: 50,
+                    backgroundColor: "#004e98",
+                    borderRadius: 10,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Text
+                    style={{ color: "white", fontSize: 15, fontWeight: "500" }}
+                  >
+                    Book Ticket
+                  </Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => setOpenModal(false)}>
+                <View
+                  style={{
+                    width: 180,
+                    height: 50,
+                    backgroundColor: "#c1121f",
+                    borderRadius: 10,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    // textAlign: "center",
+                  }}
+                >
+                  <Text
+                    style={{ color: "white", fontSize: 15, fontWeight: "500" }}
+                  >
+                    Clear
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </Modal>
