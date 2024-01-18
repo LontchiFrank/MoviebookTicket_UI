@@ -13,8 +13,13 @@ import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import Card from "./components/Card.js";
 import { DATA, metaScore } from "./components/Data.js";
 import BoxCard from "./components/BoxCard.js";
+import Modals from "./components/Modals.js";
 
 export default function App() {
+  // const [openModal, setOpenModal] = useState(false);
+  // const openModalFunc=()=>{
+  //   setOpenModal(true)
+  // }
   return (
     <View style={styles.container}>
       <View style={styles.firstBar}>
@@ -39,7 +44,12 @@ export default function App() {
         <FlatList
           data={DATA}
           renderItem={({ item }) => (
-            <Card title={item.Title} image={item.Poster} clock={item.Runtime} />
+            <Card
+              item={item}
+              title={item.Title}
+              image={item.Poster}
+              clock={item.Runtime}
+            />
           )}
           keyExtractor={(item) => item.imdbID}
           horizontal={true}
