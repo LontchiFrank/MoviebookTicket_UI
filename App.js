@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import "react-native-gesture-handler";
 import {
   StyleSheet,
   Text,
@@ -14,6 +15,29 @@ import Card from "./components/Card.js";
 import { DATA, metaScore } from "./components/Data.js";
 import BoxCard from "./components/BoxCard.js";
 import Modals from "./components/Modals.js";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { NavigationContainer } from "@react-navigation/native";
+
+function HomeScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Button
+        onPress={() => navigation.navigate("Notifications")}
+        title="Go to notifications"
+      />
+    </View>
+  );
+}
+
+function NotificationsScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Button onPress={() => navigation.goBack()} title="Go back home" />
+    </View>
+  );
+}
+
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   // const [openModal, setOpenModal] = useState(false);
@@ -22,9 +46,16 @@ export default function App() {
   // }
   return (
     <View style={styles.container}>
+      <NavigationContainer>
+        <Drawer.Navigator initialRouteName="Home">
+          <Drawer.Screen name="Home" component={HomeScreen} />
+          <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+        </Drawer.Navigator>
+      </NavigationContainer>
       <View style={styles.firstBar}>
-        <Ionicons name="menu" size={24} color="black" />
-
+        <TouchableOpacity>
+          <Ionicons name="menu" size={24} color="black" />
+        </TouchableOpacity>
         <Text style={styles.titleHead}>STAR Cineplex</Text>
         <View style={styles.secondside}>
           <EvilIcons name="search" size={24} color="#6c757d" />
