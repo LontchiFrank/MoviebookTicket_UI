@@ -6,6 +6,7 @@ import {
   View,
   FlatList,
   TouchableOpacity,
+  Button,
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
@@ -17,46 +18,20 @@ import BoxCard from "./components/BoxCard.js";
 import Modals from "./components/Modals.js";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
+import Layout from "./components/Layout.js";
 
 function HomeScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Button
+    <View style={{ backgroundColor: "white" }}>
+      {/* <Button
         onPress={() => navigation.navigate("Notifications")}
         title="Go to notifications"
-      />
-    </View>
-  );
-}
-
-function NotificationsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Button onPress={() => navigation.goBack()} title="Go back home" />
-    </View>
-  );
-}
-
-const Drawer = createDrawerNavigator();
-
-export default function App() {
-  // const [openModal, setOpenModal] = useState(false);
-  // const openModalFunc=()=>{
-  //   setOpenModal(true)
-  // }
-  return (
-    <View style={styles.container}>
-      <NavigationContainer>
-        <Drawer.Navigator initialRouteName="Home">
-          <Drawer.Screen name="Home" component={HomeScreen} />
-          <Drawer.Screen name="Notifications" component={NotificationsScreen} />
-        </Drawer.Navigator>
-      </NavigationContainer>
+      /> */}
       <View style={styles.firstBar}>
-        <TouchableOpacity>
+        {/* <TouchableOpacity>
           <Ionicons name="menu" size={24} color="black" />
-        </TouchableOpacity>
-        <Text style={styles.titleHead}>STAR Cineplex</Text>
+        </TouchableOpacity> */}
+        {/* <Text style={styles.titleHead}>STAR Cineplex</Text> */}
         <View style={styles.secondside}>
           <EvilIcons name="search" size={24} color="#6c757d" />
           <AntDesign name="filter" size={24} color="#6c757d" />
@@ -93,6 +68,7 @@ export default function App() {
           <Text style={styles.soonText}> Coming Soon</Text>
         </TouchableOpacity>
       </View>
+      <View style={styles.horizontal1}></View>
       <View style={styles.horizontal1}>
         <FlatList
           data={metaScore}
@@ -109,8 +85,44 @@ export default function App() {
           showsHorizontalScrollIndicator={false}
         />
       </View>
+    </View>
+  );
+}
 
-      <StatusBar style="auto" />
+function NotificationsScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Button onPress={() => navigation.goBack()} title="Go back home" />
+    </View>
+  );
+}
+
+const Nav = () => {
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="STAR Cineplex" component={HomeScreen} />
+
+        <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
+};
+
+const Drawer = createDrawerNavigator();
+
+export default function App() {
+  // const [openModal, setOpenModal] = useState(false);
+  // const openModalFunc=()=>{
+  //   setOpenModal(true)
+  // }
+  const openDrawal = () => {
+    // navigation.toggleDrawer();
+    console.log("Hey");
+  };
+  return (
+    <View style={styles.container}>
+      <Nav />
     </View>
   );
 }
@@ -124,11 +136,11 @@ const styles = StyleSheet.create({
   },
   firstBar: {
     // backgroundColor: "red",
-    height: "5%",
+    height: "3%",
     width: "100%",
     display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
+    // flexDirection: "row",
+    // justifyContent: "space-between",
     paddingTop: 4,
     paddingRight: 24,
   },
@@ -150,6 +162,7 @@ const styles = StyleSheet.create({
   },
   secondside: {
     display: "flex",
+    justifyContent: "flex-end",
     flexDirection: "row",
     gap: 3,
   },
